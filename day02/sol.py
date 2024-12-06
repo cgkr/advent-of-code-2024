@@ -2,6 +2,19 @@
 
 
 def load_data(filename: str) -> list:
+    """Load data from a file.
+
+    Parameters
+    ----------
+    filename : str
+        The name of the file to load data from.
+
+    Returns
+    -------
+    list
+        A list of lists, where each inner list represents a row of integers from the
+        file.
+    """
     with open(filename, "r") as file:
         return [list(map(int, line.split())) for line in file]
 
@@ -12,13 +25,17 @@ def is_monotonic(row: list, allow_dampened: bool = False) -> bool:
 
     Parameters
     ----------
-    row (list): The input row.
-    allow_dampened (bool): Whether to allow removing one element to make the row monotonic.
+    row : list
+        The input row.
+    allow_dampened : bool, optional
+        Whether to allow removing one element to make the row monotonic (default is
+        False).
 
     Returns
     -------
-    bool: A boolean indicating if the row is monotonic or can be made monotonic by removing one element.
-
+    bool
+        A boolean indicating if the row is monotonic or can be made monotonic by
+        removing one element.
     """
 
     def check_monotonic(sub_row):
@@ -44,13 +61,17 @@ def is_acceptable_diff(row: list, allow_dampened: bool = False) -> bool:
 
     Parameters
     ----------
-    row (list): The input row.
-    allow_dampened (bool): Whether to allow removing one element to make the row satisfy the condition.
+    row : list
+        The input row.
+    allow_dampened : bool, optional
+        Whether to allow removing one element to make the row satisfy the condition
+        (default is False).
 
     Returns
     -------
-    bool: A boolean indicating if the row satisfies the condition or can be made to satisfy by removing one element.
-
+    bool
+        A boolean indicating if the row satisfies the condition or can be made to
+        satisfy by removing one element.
     """
 
     def check_diff(sub_row):
@@ -74,26 +95,52 @@ def is_safe(row: list, allow_dampened: bool = False) -> bool:
 
     Parameters
     ----------
-    row (list): The input row.
-    allow_dampened (bool): Whether to allow removing one element to make the row safe.
+    row : list
+        The input row.
+    allow_dampened : bool, optional
+        Whether to allow removing one element to make the row safe (default is False).
 
     Returns
     -------
-    bool: A boolean indicating if the row is safe.
-
+    bool
+        A boolean indicating if the row is safe.
     """
     return is_monotonic(row, allow_dampened=allow_dampened) and is_acceptable_diff(
-        row,
-        allow_dampened=allow_dampened,
+        row, allow_dampened=allow_dampened
     )
 
 
 def solve_part_a(filename: str = "input.txt") -> int:
+    """Solve part A of the problem.
+
+    Parameters
+    ----------
+    filename : str, optional
+        The name of the file to load data from (default is "input.txt").
+
+    Returns
+    -------
+    int
+        The number of safe rows in the data.
+    """
     data = load_data(filename)
     return sum(is_safe(row) for row in data)
 
 
 def solve_part_b(filename: str = "input.txt") -> int:
+    """Solve part B of the problem.
+
+    Parameters
+    ----------
+    filename : str, optional
+        The name of the file to load data from (default is "input.txt").
+
+    Returns
+    -------
+    int
+        The number of safe rows in the data, allowing one element to be removed to make
+        the row safe.
+    """
     data = load_data(filename)
     return sum(is_safe(row, allow_dampened=True) for row in data)
 
