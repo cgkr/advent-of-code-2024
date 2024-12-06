@@ -119,3 +119,6 @@ dmypy.json
 
 # PyCharm IDE settings and workspace files (optional if using PyCharm)
 .idea/
+
+# AoC input files
+input.txt
