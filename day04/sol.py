@@ -3,7 +3,7 @@
 from pathlib import Path
 
 
-def count_horizontal(grid, word):
+def count_horizontal(grid: list[list[str]], word: str) -> int:
     """Count occurrences of a word horizontally in the grid.
 
     Parameters
@@ -31,7 +31,7 @@ def count_horizontal(grid, word):
     return count
 
 
-def count_vertical(grid, word):
+def count_vertical(grid: list[list[str]], word: str) -> int:
     """Count occurrences of a word vertically in the grid.
 
     Parameters
@@ -61,7 +61,7 @@ def count_vertical(grid, word):
     return count
 
 
-def count_diagonal_down_right(grid, word):
+def count_diagonal_down_right(grid: list[list[str]], word: str) -> int:
     """Count occurrences of a word diagonally down and right in the grid.
 
     Parameters
@@ -94,7 +94,7 @@ def count_diagonal_down_right(grid, word):
     return count
 
 
-def count_diagonal_down_left(grid, word):
+def count_diagonal_down_left(grid: list[list[str]], word: str) -> int:
     """Count occurrences of a word diagonally down and left in the grid.
 
     Parameters
@@ -127,7 +127,7 @@ def count_diagonal_down_left(grid, word):
     return count
 
 
-def count_diagonal_up_right(grid, word):
+def count_diagonal_up_right(grid: list[list[str]], word: str) -> int:
     """Count occurrences of a word diagonally up and right in the grid.
 
     Parameters
@@ -160,7 +160,7 @@ def count_diagonal_up_right(grid, word):
     return count
 
 
-def count_diagonal_up_left(grid, word):
+def count_diagonal_up_left(grid: list[list[str]], word: str) -> int:
     """Count occurrences of a word diagonally up and left in the grid.
 
     Parameters
@@ -193,7 +193,7 @@ def count_diagonal_up_left(grid, word):
     return count
 
 
-def count_word_occurrences(grid, word):
+def count_word_occurrences(grid: list[list[str]], word: str) -> int:
     """Count total occurrences of a word in all directions in the grid.
 
     Parameters
@@ -222,7 +222,9 @@ def count_word_occurrences(grid, word):
     return int(total)
 
 
-def check_word(grid, word, x, y, dx, dy):
+def check_word(
+    grid: list[list[str]], word: str, x: int, y: int, dx: int, dy: int
+) -> bool:
     """Check if a word exists starting from a position in a given direction.
 
     Parameters
@@ -257,7 +259,7 @@ def check_word(grid, word, x, y, dx, dy):
     return True
 
 
-def count_mas(grid):
+def count_mas(grid: list[list[str]]) -> int:
     """Count occurrences where both diagonals centered around 'A' form 'MAS' or 'SAM'.
 
     Parameters
